@@ -1,16 +1,11 @@
 # SpringBoot and Elastic Search Example on Cloud Foundry
 
-This is a reference application for deploying the JPetstore application on the JBoss Web Server (Tomcat 8) image on OpenShift. It leverages common web application frameworks including Spring, IBatis (Object Relational Mapping Framework) and Struts. This example is based on the following example and has been modified to work in an OpenShift environment.
+This is a sample SpringBoot application that performs Geo Bounded queries against an Elastic Search instance and plots the data on a map interactively. This application can be run on a workstation or in a cloud environment such as Cloud Foundry. In this example, I will show how to deploy the application on a running Cloud Foundry instance. 
 
-https://src.springframework.org/svn/spring-samples/jpetstore/trunk/org.springframework.samples.jpetstore/
+Please follow these steps to deploy this application.
 
-This application has also been modified to work with an external RDBMS - at the moment it has only been tested with the Postgres Database, but in the future it will be updated to work with a variety of databases. 
-
-Please follow these steps to deploy this application on an OSE environment.
-
-1. Create a new OpenShift Project
-<ul><pre>oc new-project jpetstore --description="jpetstore on jws 8" 
---display-name="JPetstore application deployed on a JWS/Tomcat image connecting to a remote database"</pre></ul>
+1. Build the project locally
+<ul><pre>mvn clean package</pre></ul>
 
 2. Now install the application template in the project namespace. This template includes the environment specific database connection details which will be collected at runtime and subsequently used to build the runtime configuration.
 <ul><pre>oc create -f https://raw.githubusercontent.com/gvijayar/jpetstore-tomcat/master/jpetstore-ose3-externaldb.json</pre></ul>
