@@ -7,6 +7,10 @@ Please follow these steps to deploy this application.
 1. Build the project locally
 <ul><pre>mvn clean package</pre></ul>
 
+2. Initialize the Elastic Search service with Geo Location data. Update the scripts with the Elastic Search Service endpoints.
+<ul><pre>src/main/resources/data/create_schema.sh</pre></ul>
+<ul><pre>src/main/resources/data/insert_big_cities.sh</pre></ul>
+
 2. Now create a User Provided Service that binds an external Elastic Search instance to the application.
 <ul><pre>cf create-user-provided-service es-service -p '{"url":"http://{elastic-search-host}","port":"{elastic-search-port}","esindex":"{index-name}"}'</pre></ul>
 
